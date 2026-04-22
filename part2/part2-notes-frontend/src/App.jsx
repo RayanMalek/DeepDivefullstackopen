@@ -1,21 +1,30 @@
 
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Search from './components/Search'
 import Form  from './components/Form'
 import People from './components/People'
+import axios from 'axios'
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456', id: 1 },
-    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ])
+ 
 
 
   const [newName, setNewName] = useState('')
   const [newNumber,setNewNumber] = useState('')
   const [filter,setFilter]=useState('')
+  const [persons,setPersons]=useState([])
+
+  const hook=()=>{
+    console.log("effect")
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response=>{
+        console.log("promise fulfilled")
+        console.log(response.data)
+        setPersons(response.data)
+      })
+  }
+  useEffect(hook,[])
 
 
   const addPerson =(event) =>{
@@ -24,7 +33,7 @@ const App = () => {
     const personObject = {
       name : newName,
       id : String(persons.length +1),
-      Number : newNumber
+      number : newNumber
     } 
 
     if (persons.some(person=> person.name===newName || person.Number===newNumber)){
