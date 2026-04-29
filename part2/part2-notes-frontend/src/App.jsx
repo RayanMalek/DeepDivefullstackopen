@@ -4,6 +4,9 @@ import Search from './components/Search'
 import Form  from './components/Form'
 import People from './components/People'
 import personService from './services/persons'
+import Notification from './components/Notification'
+import './index.css'
+
 
 const App = () => {
  
@@ -13,7 +16,7 @@ const App = () => {
   const [newNumber,setNewNumber] = useState('')
   const [filter,setFilter]=useState('')
   const [persons,setPersons]=useState([])
-
+  const [Message , setMessage] = useState(null)
   const hook=()=>{
     personService
     .getAll()
@@ -45,6 +48,8 @@ const App = () => {
         setPersons(persons.concat(returnedPerson))
         setNewName('')
         setNewNumber("")
+         setMessage(`Added ${returnedPerson.name}`)
+        setTimeout(() => setMessage(null), 5000)
     })
     
     }
@@ -89,6 +94,8 @@ const App = () => {
   return (
     <div>   
       <h2>Phonebook</h2>
+      <Notification message={Message} />
+
       <Search 
       filter={filter}
       onChange ={handleFilterChange}

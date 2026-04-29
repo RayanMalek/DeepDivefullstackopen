@@ -1,8 +1,8 @@
-# Notes frontend
+# persons frontend
 
 This repository contains the frontend developed from part 2 onwards in the Full Stack course. The different stages of the application are saved in different branches.
 
-Notes frontend is a simple web application for saving notes. It is developed using React and Vite. From part 3 of the course onwards, it is intended to be used with a separate backend, which is available in the repository https://github.com/fullstack-hy2020/part3-notes-backend.
+persons frontend is a simple web application for saving persons. It is developed using React and Vite. From part 3 of the course onwards, it is intended to be used with a separate backend, which is available in the repository https://github.com/fullstack-hy2020/part3-persons-backend.
 
 ## Running the application on your own machine
 
@@ -10,9 +10,9 @@ You can easily try out the application on your own machine. The current version 
 
 Follow these steps to run the application:
 
-1. Clone this repository to your own machine with the command `git clone https://github.com/fullstack-hy2020/part2-notes-frontend.git`
+1. Clone this repository to your own machine with the command `git clone https://github.com/fullstack-hy2020/part2-persons-frontend.git`
 
-2. Navigate to the cloned repository with the command `cd part2-notes-frontend`
+2. Navigate to the cloned repository with the command `cd part2-persons-frontend`
 
 3. Switch to the desired branch with the command `git switch <branch-name>`
 
@@ -22,7 +22,7 @@ Follow these steps to run the application:
 
 6. If you are in branches part2-4 to part2-8, additionally start the JSON server by running the command `npm run server` in a separate terminal window
 
-From part 3 onwards, the frontend is used with a [separate backend](https://github.com/fullstack-hy2020/part3-notes-backend).
+From part 3 onwards, the frontend is used with a [separate backend](https://github.com/fullstack-hy2020/part3-persons-backend).
 
 ## How to switch between branches?
 
