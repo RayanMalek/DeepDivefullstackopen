@@ -36,11 +36,21 @@ const App = () => {
       number : newNumber
     } 
 
-    if (persons.some(person=> person.name===newName || person.Number===newNumber)){
-          alert(`${newName} or ${newNumber} is already in the phonebook`)
-    }else{
-
-   
+    const existing = persons.find(person => person.name === newName)
+    if (existing) {
+      if (window.confirm(`${newName} is already added to the phonebook, replace the old number with a new one?`)) {
+        personService
+          .update(existing.id, { name: newName, number: newNumber })
+          .then(returnedPerson => {
+            setPersons(persons.map(p => p.id !== existing.id ? p : returnedPerson))
+            setNewName('')
+            setNewNumber('')
+            setMessage(`Updated ${returnedPerson.name}`)
+            setTimeout(() => setMessage(null), 5000)
+          })
+      }
+      return
+    }
 
     personService
     .create(personObject)
@@ -51,8 +61,6 @@ const App = () => {
          setMessage(`Added ${returnedPerson.name}`)
         setTimeout(() => setMessage(null), 5000)
     })
-    
-    }
   }
 
    const personsToShow= filter?
